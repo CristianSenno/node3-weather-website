@@ -5,6 +5,8 @@ const geocode = require("./utils/geocode")
 const forescast = require("./utils/forecast")
 
 const app = express() //per generare l'applicazione
+const port = process.env.PORT || 3000 //setto la porta che usa heroku, in heroku prende la prima mentre il locale la seconda
+
 const publicDirPath = path.join(__dirname, "../public")
 const viewPath = path.join(__dirname, "../templates/views")
 const partialPath = path.join(__dirname, "../templates/partial")
@@ -120,6 +122,6 @@ app.get("*", (req, res) => {
 })
 
 //start the server
-app.listen(3000, () => {
-    console.log("Express server is up on port 3000!")
+app.listen(port, () => {
+    console.log("Express server is up on port " + port)
 })
